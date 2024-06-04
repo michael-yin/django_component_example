@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "components/modal";
 
 .jumbotron {
   // should be relative path of the entry scss file

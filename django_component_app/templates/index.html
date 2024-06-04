@@ -1,30 +1,56 @@
 {% load webpack_loader static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Index</title>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Example</title>
   {% stylesheet_pack 'app' %}
+  {% javascript_pack 'app' attrs='defer' %}
 </head>
 <body>
 
-<div class="jumbotron py-5">
-  <div class="w-full max-w-7xl mx-auto px-4">
-      <h1 class="text-4xl mb-4">Hello, world!</h1>
-      <p class="mb-4">This is a template for a simple marketing or informational website. It includes a large callout called a
-        jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+<div data-controller="modal">
 
-      <p><a class="btn-blue mb-4" href="#" role="button">Learn more »</a></p>
+  <!-- Modal toggle -->
+  <button data-action="click->modal#openModal" class="btn-blue" type="button">
+    Toggle modal
+  </button>
 
-      <div class="flex justify-center">
-        <img src="{% static 'vendors/images/webpack.png' %}"/>
+  <div data-modal-target="container" tabindex="-1" aria-hidden="true" class="hidden modal-container">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+
+      <div class="modal-content">
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h3>
+            Modal Title
+          </h3>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p class="text-base leading-relaxed text-gray-500">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in lectus et ipsum eleifend consequat. Aenean
+            pellentesque tortor velit, non molestie ex ultrices in. Nulla at neque eu nulla imperdiet mattis vel sit amet
+            neque. In ac mollis augue, ac iaculis purus. Donec nisl massa, gravida pharetra euismod nec, ultrices ut quam.
+            Vivamus efficitur bibendum hendrerit. In iaculis sagittis elementum. Sed sit amet dolor ultrices, mollis nisl
+            sed, cursus eros. Suspendisse sollicitudin quam nulla, at dignissim ex scelerisque non. Mauris ac porta nisl.
+          </p>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button data-action="click->modal#closeModal" type="button" class="btn-blue">
+            Close
+          </button>
+        </div>
+
       </div>
+    </div>
   </div>
 </div>
-
-{% javascript_pack 'app' %}
 
 </body>
 </html>

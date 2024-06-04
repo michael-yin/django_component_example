@@ -1,0 +1,23 @@
+@layer components {
+  [data-controller="modal"] {
+    & .modal-container {
+      @apply overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full max-h-full;
+    }
+
+    & .modal-content {
+      @apply relative bg-white rounded-lg shadow;
+    }
+
+    & .modal-header {
+      @apply flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600;
+    }
+
+    & .modal-body {
+      @apply p-4 md:p-5 space-y-4;
+    }
+
+    & .modal-footer {
+      @apply flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600;
+    }
+  }
+}
