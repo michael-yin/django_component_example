@@ -1,60 +1,44 @@
 {% load webpack_loader static %}
+{% load viewcomponent_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tab Example</title>
+  <title>Modal Example</title>
   {% stylesheet_pack 'app' %}
   {% javascript_pack 'app' attrs='defer' %}
 </head>
 <body>
+  {% component 'modal' as modal_comp %}
+    {% call modal_comp.modal_trigger %}
+      <button data-action="click->modal#openModal" class="btn-blue" type="button">
+        Toggle modal
+      </button>
+    {% endcall %}
 
-    <div data-controller="tabs">
-      <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
-          <li class="me-2" role="presentation">
-            <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                    data-action="click->tabs#showContent" data-tabs-target="1" type="button">
-              Profile
-            </button>
+    {% call modal_comp.modal_header %}
+      <h3>
+        Modal Title
+      </h3>
+    {% endcall %}
 
-            <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                    data-action="click->tabs#showContent" data-tabs-target="2" type="button">
-              Dashboard
-            </button>
+    {% call modal_comp.modal_body %}
+      <p class="text-base leading-relaxed text-gray-500">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in lectus et ipsum eleifend consequat. Aenean
+        pellentesque tortor velit, non molestie ex ultrices in. Nulla at neque eu nulla imperdiet mattis vel sit amet
+        neque. In ac mollis augue, ac iaculis purus. Donec nisl massa, gravida pharetra euismod nec, ultrices ut quam.
+        Vivamus efficitur bibendum hendrerit. In iaculis sagittis elementum. Sed sit amet dolor ultrices, mollis nisl
+        sed, cursus eros. Suspendisse sollicitudin quam nulla, at dignissim ex scelerisque non. Mauris ac porta nisl.
+      </p>
+    {% endcall %}
 
-            <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                    data-action="click->tabs#showContent" data-tabs-target="3" type="button">
-              Settings
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" data-panel="1" role="tabpanel">
-          <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                  class="font-medium text-gray-800 ">Profile tab's associated content</strong>. Clicking
-            another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-            content visibility and styling.</p>
-        </div>
-
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" data-panel="2" role="tabpanel">
-          <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                  class="font-medium text-gray-800 ">Dashboard tab's associated content</strong>. Clicking
-            another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-            content visibility and styling.</p>
-        </div>
-
-        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" data-panel="3" role="tabpanel">
-          <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                  class="font-medium text-gray-800 ">Settings tab's associated content</strong>. Clicking
-            another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
-            content visibility and styling.</p>
-        </div>
-      </div>
-    </div>
-
+    {% call modal_comp.modal_footer %}
+      <button data-action="click->modal#closeModal" type="button" class="btn-blue">
+        Close
+      </button>
+    {% endcall %}
+  {% endcomponent %}
 </body>
 </html>

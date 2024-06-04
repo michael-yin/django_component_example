@@ -5,6 +5,9 @@ const pwd = process.env.PWD;
 const projectPaths = [
   Path.join(pwd, "./frontend/src/**/*.js"),
   Path.join(pwd, "./django_component_app/templates/**/*.html"),
+  // django-viewcomponent
+  Path.join(pwd, "./components/**/*.py"),          // new
+  Path.join(pwd, "./components/**/*.html"),        // new
   // add js file paths if you need
 ];
 

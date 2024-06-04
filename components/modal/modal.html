@@ -1,0 +1,21 @@
+<div data-controller="modal">
+
+  {{ self.modal_trigger.value }}
+
+  <div data-modal-target="container" tabindex="-1" aria-hidden="true" class="hidden modal-container">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          {{ self.modal_header.value }}
+        </div>
+        <div class="modal-body">
+          {{ self.modal_body.value }}
+        </div>
+        <div class="modal-footer">
+          {{ self.modal_footer.value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
